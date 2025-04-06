@@ -6,7 +6,7 @@ export const provideApolloClient = provideApollo(() => {
   return {
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: 'http://localhost:4001/graphql',
+      uri: 'https://one01426567-comp3133-assignment2-backend.onrender.com/graphql',
       fetch,
     }),
   };
