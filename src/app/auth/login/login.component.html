@@ -1,0 +1,32 @@
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <h2 *ngIf="!isSignupMode">Login</h2>
+    <h2 *ngIf="isSignupMode">Signup</h2>
+
+    <form (ngSubmit)="isSignupMode ? signup() : login()">
+      <div *ngIf="isSignupMode">
+        <label>Username:</label>
+        <input [(ngModel)]="username" name="username" required class="form-control" />
+      </div>
+
+      <label>Email:</label>
+      <input [(ngModel)]="email" name="email" required class="form-control" />
+
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="password" name="password" required class="form-control" />
+
+      <button type="submit" class="btn btn-primary w-100 mt-3">
+        {{ isSignupMode ? 'Signup' : 'Login' }}
+      </button>
+    </form>
+
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+    <p *ngIf="message" class="success-message">{{ message }}</p>
+
+    <div class="toggle-auth">
+      <button (click)="toggleMode()">
+        {{ isSignupMode ? 'Already have an account? Login' : 'Don\'t have an account? Signup' }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<h2>Search Employees</h2>
+
+<form (ngSubmit)="search()">
+  <input [(ngModel)]="designation" name="designation" placeholder="Designation (optional)" />
+  <input [(ngModel)]="department" name="department" placeholder="Department (optional)" />
+  <button type="submit">Search</button>
+</form>
+
+<p *ngIf="error" style="color: red">{{ error }}</p>
+
+<table *ngIf="employees.length > 0" border="1" align="center">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Designation</th>
+    <th>Department</th>
+    <th>Salary</th>
+    <th>Date of Joining</th>
+  </tr>
+  <tr *ngFor="let emp of employees">
+    <td>{{ emp.first_name }} {{ emp.last_name }}</td>
+    <td>{{ emp.email }}</td>
+    <td>{{ emp.gender }}</td>
+    <td>{{ emp.designation }}</td>
+    <td>{{ emp.department }}</td>
+    <td>{{ emp.salary }}</td>
+    <td>{{ emp.date_of_joining | date: 'mediumDate' }}</td>
+  </tr>
+</table>

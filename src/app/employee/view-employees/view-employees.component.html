@@ -1,0 +1,47 @@
+<div class="employee-page">
+  <div class="top-bar">
+    <h2 class="student-info">Kei Ishikawa - Comp3133 Assignment2 -</h2>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+
+  <h2 class="page-title">All Employees</h2>
+
+  <div class="actions-bar">
+    <div class="search-fields">
+      <input [(ngModel)]="searchDesignation" placeholder="Search by Designation" />
+      <input [(ngModel)]="searchDepartment" placeholder="Search by Department" />
+    </div>
+    <button (click)="goToCreate()" class="add-btn">+ Add Employee</button>
+  </div>
+
+  <div class="employee-table-wrapper">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Designation</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Date of Joining</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of filteredEmployees">
+          <td>{{ emp.first_name }} {{ emp.last_name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.designation }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.salary }}</td>
+          <td>{{ emp.date_of_joining | date: 'mediumDate' }}</td>
+          <td>
+            <button (click)="goToEdit(emp.id)" class="btn edit">Update</button>
+            <button (click)="goToView(emp.id)" class="btn view">View</button>
+            <button (click)="deleteEmployee(emp.id)" class="btn delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

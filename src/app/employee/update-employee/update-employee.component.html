@@ -1,0 +1,35 @@
+<div class="update-wrapper">
+  <div class="update-container">
+    <h2>Update Employee</h2>
+
+    <form *ngIf="loaded" (ngSubmit)="updateEmployee()">
+      <label>First Name:</label>
+      <input [(ngModel)]="first_name" name="first_name" class="form-control" required />
+
+      <label>Last Name:</label>
+      <input [(ngModel)]="last_name" name="last_name" class="form-control" required />
+
+      <label>Email:</label>
+      <input [(ngModel)]="email" name="email" class="form-control" required />
+
+      <label>Designation:</label>
+      <input [(ngModel)]="designation" name="designation" class="form-control" required />
+
+      <label>Department:</label>
+      <input [(ngModel)]="department" name="department" class="form-control" required />
+
+      <label>Update Image:</label>
+      <input type="file" (change)="onImageSelected($event)" accept="image/*" class="form-control" />
+      <img *ngIf="previewImage" [src]="previewImage" class="img-preview" />
+
+      <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+    </form>
+
+    <p *ngIf="message" class="success-message">{{ message }}</p>
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+
+    <div class="back-button" style="text-align: center; margin-top: 1rem;">
+      <button (click)="goHome()">Back to Home</button>
+    </div>
+  </div>
+</div>

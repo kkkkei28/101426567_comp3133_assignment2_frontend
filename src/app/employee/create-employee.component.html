@@ -1,0 +1,28 @@
+<div class="create-wrapper">
+  <div class="create-container">
+    <h2>Create Employee</h2>
+
+    <form (ngSubmit)="submit()" enctype="multipart/form-data">
+      <input [(ngModel)]="employee.first_name" name="first_name" placeholder="First Name" required class="form-control" />
+      <input [(ngModel)]="employee.last_name" name="last_name" placeholder="Last Name" required class="form-control" />
+      <input [(ngModel)]="employee.email" name="email" placeholder="Email" required class="form-control" />
+      <input [(ngModel)]="employee.gender" name="gender" placeholder="Gender" class="form-control" />
+      <input [(ngModel)]="employee.designation" name="designation" placeholder="Designation" required class="form-control" />
+      <input type="number" [(ngModel)]="employee.salary" name="salary" placeholder="Salary" required class="form-control" />
+      <input type="date" [(ngModel)]="employee.date_of_joining" name="date_of_joining" required class="form-control" />
+      <input [(ngModel)]="employee.department" name="department" placeholder="Department" required class="form-control" />
+
+      <!-- Image Upload -->
+      <label class="upload-label">Upload Profile Image (optional):</label>
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" class="form-control" />
+
+      <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+    </form>
+
+    <p *ngIf="message" class="success-message">{{ message }}</p>
+
+    <div class="back-home">
+      <button (click)="goHome()" class="btn btn-secondary">Back to Home</button>
+    </div>
+  </div>
+</div>
